@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_contact_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.avash.phonebook.activity.ContactListActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchLinearLayout"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:textColor="#fff"
+            android:padding="4dp"
+            android:text="Contact List"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:padding="4dp"
+            android:layout_height="wrap_content"
+            android:hint="search"
+            android:gravity="center"
+            android:background="@drawable/background_gradient"
+            android:textSize="24dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listViewLayout"
+        android:layout_below="@id/searchLinearLayout"
+        android:orientation="vertical"
+        android:background="@drawable/background_round_gradient">
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:id="@+id/contactListView"></ListView>
+
+    </LinearLayout>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/add"
+            android:layout_margin="30dp"
+            app:fabSize="normal"
+            app:backgroundTint="@color/colorPrimary"
+            android:id="@+id/addFloatingButton"
+            />
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+</RelativeLayout>
