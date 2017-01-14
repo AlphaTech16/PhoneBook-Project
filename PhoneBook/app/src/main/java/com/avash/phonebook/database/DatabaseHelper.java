@@ -75,7 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             PHONE_BOOK_TABLE_IMAGE+" TEXT," +
             " FOREIGN KEY ("+PHONE_BOOK_TABLE_USER_ID+") REFERENCES "+USER_TABLE_NAME+"("+USER_TABLE_ID+"))";
 
-    private static final String insertPhoneTable = "INSERT INTO "+PHONE_BOOK_TABLE_NAME+
+    /*private static final String insertPhoneTable = "INSERT INTO "+PHONE_BOOK_TABLE_NAME+
             " ("+PHONE_BOOK_TABLE_IMAGE+","+
             PHONE_BOOK_TABLE_USER_ID+","+
             PHONE_BOOK_TABLE_CONTACT_NAME+","+
@@ -122,7 +122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             PHONE_BOOK_TABLE_CONTACT_NUMBER+","+
             PHONE_BOOK_TABLE_SKYPE_ID+","+
             PHONE_BOOK_TABLE_EMAIL_ID+") VALUES ("+
-            "'image', 2,'Rahul Das','01911867747', 'Bangladesh','avashcmt')";
+            "'image', 2,'Rahul Das','01911867747', 'Bangladesh','avashcmt')";*/
 
 
     public DatabaseHelper(Context context) {
@@ -140,12 +140,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.execSQL(insertUserTable5);
 
             db.execSQL(phoneBookTable);
-            db.execSQL(insertPhoneTable);
-            db.execSQL(insertPhoneTable2);
-            db.execSQL(insertPhoneTable3);
-            db.execSQL(insertPhoneTable4);
-            db.execSQL(insertPhoneTable5);
-            db.execSQL(insertPhoneTable6);
+//            db.execSQL(insertPhoneTable);
+//            db.execSQL(insertPhoneTable2);
+//            db.execSQL(insertPhoneTable3);
+//            db.execSQL(insertPhoneTable4);
+//            db.execSQL(insertPhoneTable5);
+//            db.execSQL(insertPhoneTable6);
 
 
         }catch (Exception e){
