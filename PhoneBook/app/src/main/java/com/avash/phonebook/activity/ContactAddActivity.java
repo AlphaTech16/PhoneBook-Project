@@ -1,5 +1,6 @@
 package com.avash.phonebook.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class ContactAddActivity extends AppCompatActivity {
         addNewContact= (TextView) findViewById(R.id.addContactTextView);
         contactId=getIntent().getIntExtra("cId",0);
         userId=getIntent().getIntExtra("uId",0);
-        Log.e("id","onCreate :"+contactId);
+        //Log.e("id","onCreate :"+contactId);
 
         if (contactId > 0){
             PhoneBookModel phoneBookModel=phoneBookManager.getSingleContact(contactId);
@@ -55,18 +56,26 @@ public class ContactAddActivity extends AppCompatActivity {
         if (contactId >0){
             long updateResult=phoneBookManager.updateContact(phoneBookModel);
             if (updateResult >0){
-                Toast.makeText(this,String.valueOf(updateResult),Toast.LENGTH_SHORT).show();
+                Intent listIntent=new Intent(ContactAddActivity.this,ContactListActivity.class);
+                startActivity(listIntent);
+                finish();
+            }else {
+                Toast.makeText(this, "Sorry! Try again.", Toast.LENGTH_SHORT).show();
             }
         }else {
 
 
             long insertedResult = phoneBookManager.addNewContact(phoneBookModel);
             if (insertedResult > 0) {
-                Toast.makeText(this, String.valueOf(insertedResult), Toast.LENGTH_SHORT).show();
+
+                Intent listIntent=new Intent(ContactAddActivity.this,ContactListActivity.class);
+                startActivity(listIntent);
+                finish();
+
+            }else {
+                Toast.makeText(this, "Sorry! Try again.", Toast.LENGTH_SHORT).show();
             }
         }
-        Intent listIntent=new Intent(ContactAddActivity.this,ContactListActivity.class);
-        startActivity(listIntent);
 
     }
 }

@@ -41,10 +41,12 @@
         android:id="@+id/listViewLayout"
         android:layout_below="@id/searchLinearLayout"
         android:orientation="vertical"
-        android:background="@drawable/background_round_gradient">
+        android:background="@drawable/background_gradient">
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:divider="@color/colorPrimary"
+            android:dividerHeight="1dp"
             android:clickable="true"
             android:id="@+id/contactListView"></ListView>
 

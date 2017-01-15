@@ -48,7 +48,8 @@ public class PhoneBookManager {
             Log.e("---------------","*******"+e.toString());
         }
 
-        String sqlString = "SELECT * FROM " + DatabaseHelper.PHONE_BOOK_TABLE_NAME;
+        String sqlString = "SELECT * FROM " + DatabaseHelper.PHONE_BOOK_TABLE_NAME+
+                " ORDER BY "+DatabaseHelper.PHONE_BOOK_TABLE_CONTACT_NAME+" ASC";
         System.out.println(sqlString);
 //         + " where " + DatabaseHelper.PHONE_BOOK_TABLE_ID +" = '" + pid + "' ";
         Cursor cursor = null;
@@ -76,7 +77,11 @@ public class PhoneBookManager {
                 }catch (Exception e){Log.e("------------------","--------"+e.toString());}
             }while (cursor.moveToNext());
         }
-        else this.allContacts = null;
+        else {
+
+            allContacts.add(new PhoneBookModel(0,1,"List Empty",null,null,null,null));
+
+        }
         sqLiteDatabase.close();
 
         return this.allContacts;

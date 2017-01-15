@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,8 +41,22 @@ public class ContactRowAdapter extends ArrayAdapter<PhoneBookModel> {
 
         Button callButton = (Button) convertView.findViewById(R.id.callButton);
         Button smsButton = (Button) convertView.findViewById(R.id.smsButton);
+        TextView imageTextView = (TextView) convertView.findViewById(R.id.imageTextView);
+        if(phoneBookModels.get(position).getPhoneBookID() == 0){
+            imageTextView.setVisibility(View.INVISIBLE);
+            callButton.setVisibility(View.INVISIBLE);
+            smsButton.setVisibility(View.INVISIBLE);
+
+        }else {
+            imageTextView.setVisibility(View.VISIBLE);
+            callButton.setVisibility(View.VISIBLE);
+            smsButton.setVisibility(View.VISIBLE);
+        }
+
         nameTextView.setText(phoneBookModel.getContactName());
+        nameTextView.setGravity(View.TEXT_ALIGNMENT_CENTER);
         mobileTextView.setText(phoneBookModel.getContactNumber());
+
 
         callButton.setOnClickListener(new View.OnClickListener() {
             @Override
