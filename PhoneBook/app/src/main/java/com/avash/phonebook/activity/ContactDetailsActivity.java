@@ -115,5 +115,15 @@ public class ContactDetailsActivity extends AppCompatActivity {
             }
         });
 
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent updateIntent=new Intent(ContactDetailsActivity.this,ContactAddActivity.class);
+                updateIntent.putExtra("cId",phoneBookModel.getPhoneBookID());
+                updateIntent.putExtra("uId",phoneBookModel.getuID());
+                startActivity(updateIntent);
+            }
+        });
+
     }
 }

@@ -20,6 +20,17 @@ public class PhoneBookModel {
         this.image = image;
     }
 
+    public PhoneBookModel(int phoneBookID, String contactName, String contactNumber,
+                          String skypeID, String emailID, String image) {
+        this.phoneBookID = phoneBookID;
+        this.uID = uID;
+        this.contactName = contactName;
+        this.contactNumber = contactNumber;
+        this.skypeID = skypeID;
+        this.emailID = emailID;
+        this.image = image;
+    }
+
     public PhoneBookModel(String contactName, String contactNumber, String skypeID, String emailID, String image) {
         this.contactName = contactName;
         this.contactNumber = contactNumber;

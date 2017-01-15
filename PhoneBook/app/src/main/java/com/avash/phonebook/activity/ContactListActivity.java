@@ -1,6 +1,7 @@
 package com.avash.phonebook.activity;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,8 @@ public class ContactListActivity extends AppCompatActivity {
     private ArrayList<PhoneBookModel>phoneBookModels;
     private DatabaseHelper databaseHelper;
 
+    private FloatingActionButton fab;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,15 @@ public class ContactListActivity extends AppCompatActivity {
                 Intent intent = new Intent(ContactListActivity.this,ContactDetailsActivity.class);
                 intent.putExtra("pid",phoneBookModels.get(position).getPhoneBookID());
                 startActivity(intent);
+            }
+        });
+
+        fab= (FloatingActionButton) findViewById(R.id.addFloatingButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addIntent=new Intent(ContactListActivity.this,ContactAddActivity.class);
+                startActivity(addIntent);
             }
         });
 
