@@ -1,9 +1,13 @@
 package com.avash.phonebook.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,6 +28,8 @@ public class ContactListActivity extends AppCompatActivity {
     private PhoneBookManager phoneBookManager;
     private ArrayList<PhoneBookModel>phoneBookModels;
     private DatabaseHelper databaseHelper;
+
+    private SharedPreferences sharedPreferences;
 
     private FloatingActionButton fab;
 
@@ -61,5 +67,31 @@ public class ContactListActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = new MenuInflater(this);
+        menuInflater.inflate(R.menu.toolbar_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logoutMenu:
+                sharedPreferences = getSharedPreferences("user_data",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("uid");
+                editor.remove(("uName"));
+                editor.apply();
+                editor.commit();
+                Toast.makeText(ContactListActivity.this, "Logout Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ContactListActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+        }
+        return onOptionsItemSelected(item);
     }
 }
