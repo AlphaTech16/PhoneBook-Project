@@ -113,6 +113,40 @@ public class PhoneBookManager {
         return phoneBookModel;
     }
 
+    public ArrayList<PhoneBookModel> getSearchContact(CharSequence s){
+        databaseHelper = new DatabaseHelper(context);
+        sqLiteDatabase = databaseHelper.getReadableDatabase();
+        allContacts = new ArrayList<>();
+        String sqlString = "SELECT * FROM " + DatabaseHelper.PHONE_BOOK_TABLE_NAME+
+                " where " + DatabaseHelper.PHONE_BOOK_TABLE_CONTACT_NAME +" LIKE '" + s + "%' ";
+        Cursor cursor = sqLiteDatabase.rawQuery(sqlString, null);
+
+        if(cursor.moveToFirst()){
+            do {
+                int phoneBookID = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.PHONE_BOOK_TABLE_ID));
+                int uID = cursor.getInt(cursor.getColumnIndex(DatabaseHelper.PHONE_BOOK_TABLE_USER_ID));
+                String contactName = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PHONE_BOOK_TABLE_CONTACT_NAME));
+                String contactNumber = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PHONE_BOOK_TABLE_CONTACT_NUMBER));
+                String skypeID = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PHONE_BOOK_TABLE_SKYPE_ID));
+                String emailID = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PHONE_BOOK_TABLE_EMAIL_ID));
+                String image = cursor.getString(cursor.getColumnIndex(DatabaseHelper.PHONE_BOOK_TABLE_IMAGE));
+
+                phoneBookModel = new PhoneBookModel(phoneBookID,uID,contactName,contactNumber,skypeID,emailID,image);
+                try{
+                    allContacts.add(phoneBookModel);
+                }catch (Exception e){Log.e("Search Error","--------"+e.toString());}
+            }while (cursor.moveToNext());
+        }
+        else {
+
+            allContacts.add(new PhoneBookModel(0,1,"No contact found!",null,null,null,null));
+
+        }
+        sqLiteDatabase.close();
+
+        return allContacts;
+    }
+
     public long updateContact (PhoneBookModel phoneBookModel){
         databaseHelper = new DatabaseHelper(context);
         sqLiteDatabase = databaseHelper.getWritableDatabase();

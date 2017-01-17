@@ -24,6 +24,7 @@
             android:padding="4dp"
             android:layout_height="wrap_content"
             android:hint="search"
+            android:id="@+id/searchEditText"
             android:gravity="center"
             android:background="@drawable/background_gradient"
             android:textSize="24dp"/>
