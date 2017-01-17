@@ -90,7 +90,7 @@ public class PhoneBookManager {
         databaseHelper = new DatabaseHelper(context);
         sqLiteDatabase = databaseHelper.getReadableDatabase();
         String sqlString = "SELECT * FROM " + DatabaseHelper.PHONE_BOOK_TABLE_NAME+
-                " where " + DatabaseHelper.PHONE_BOOK_TABLE_ID +" = '" + pid + "' ";
+                " where " + DatabaseHelper.PHONE_BOOK_TABLE_ID +" = " + pid + " ";
         Cursor cursor = sqLiteDatabase.rawQuery(sqlString, null);
 
         if(cursor.moveToFirst()){

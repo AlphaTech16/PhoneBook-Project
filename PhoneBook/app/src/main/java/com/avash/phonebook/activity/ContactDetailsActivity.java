@@ -156,7 +156,11 @@ public class ContactDetailsActivity extends AppCompatActivity {
             Intent intent = new Intent(ContactDetailsActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
+        }else if(item.getItemId() == R.id.homeMenu){
+            Intent intent = new Intent(ContactDetailsActivity.this,ContactListActivity.class);
+            startActivity(intent);
+            finish();
         }
-        return onOptionsItemSelected(item);
+        return true;
     }
 }

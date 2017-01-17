@@ -59,7 +59,7 @@ public class ContactListActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 //              Toast.makeText(view.getContext(),phoneBookModels.get(position).getContactName(),Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(ContactListActivity.this,ContactDetailsActivity.class);
-                //intent.putExtra("pid",phoneBookModels.get(position).getPhoneBookID());
+                intent.putExtra("pid",phoneBookModels.get(position).getPhoneBookID());
                 startActivity(intent);
                 finish();
             }
@@ -125,7 +125,7 @@ public class ContactListActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-        return onOptionsItemSelected(item);
+        return true;
     }
 
 }

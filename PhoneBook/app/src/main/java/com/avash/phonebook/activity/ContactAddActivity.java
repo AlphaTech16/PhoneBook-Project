@@ -106,7 +106,11 @@ public class ContactAddActivity extends AppCompatActivity {
             Intent intent = new Intent(ContactAddActivity.this,LoginActivity.class);
             startActivity(intent);
             finish();
+        }else if(item.getItemId() == R.id.homeMenu){
+            Intent intent = new Intent(ContactAddActivity.this,ContactListActivity.class);
+            startActivity(intent);
+            finish();
         }
-        return onOptionsItemSelected(item);
+        return true;
     }
 }
